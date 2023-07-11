@@ -14,7 +14,7 @@
 #   2) TO HIDE any message, set it to 'none'.
 #
 #   3) For UNICODE CHARACTERS (smileys, symbols, ..), save the file in UTF-8 encoding. See
-#      - https://github.com/justop/Hycraft-Discord/wiki/Use-Right-Encoding
+#      - https://github.com/justop/${project.name}/wiki/Use-Right-Encoding
 #
 #   4) JSON is supported. Prepend the message with [JSON].
 #
