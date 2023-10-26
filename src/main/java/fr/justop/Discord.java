@@ -14,8 +14,7 @@ import org.mineacademy.fo.plugin.SimplePlugin;
  * It uses Foundation for fast and efficient development process.
  */
 public final class Discord extends SimplePlugin {
-
-	private static String PREFIX = "§7[§4Hycraft-Discord§7] §r";
+	public static final String PREFIX = "§4[§cHycraft-BOT§4] §r";
 
 	/**
 	 * Automatically perform login ONCE when the plugin starts.
