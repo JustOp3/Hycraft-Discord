@@ -1,3 +1,8 @@
-me\sharkz\ultralinks\utils\Util.class
+fr\justop\db\DatabaseManager.class
+fr\justop\utils\Util.class
 fr\justop\commands\CommandDiscord.class
 fr\justop\Discord.class
+fr\justop\players\ProfileManager.class
+fr\justop\players\LinkProfile.class
+fr\justop\db\DatabaseConnection.class
+fr\justop\commands\LinkCommand.class

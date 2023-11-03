@@ -16,7 +16,7 @@ api-version: 1.13
   # Load the following libraries
 
   # DO NOT EDIT THE FIRST LIBRARY, required to make your plugin work under Java 15+
-  #- org.jsoup:jsoup:1.14.3
+#- org.jsoup:jsoup:1.14.3
 #- com.zaxxer:HikariCP:5.0.1
 
 # Same as libraries, but only works on Minecraft <1.16 using our own special method.
@@ -32,3 +32,6 @@ softdepend: [ AuthMe, BanManager, BungeeChatAPI, CMI, DiscordSRV, Factions, Feud
 commands:
   discord:
     description: Te donne le discord d'hycraft
+
+  link:
+    description: Te permet de lier ton account discord à minecraft
