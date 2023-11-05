@@ -22,9 +22,9 @@ public class LinkCommand implements CommandExecutor {
 
 		if (!(args.length > 0)) {
 			String token = Util.generateToken(8);
-			player.sendMessage(Discord.PREFIX + "§aTon token a été généré avec succès!");
-			player.sendMessage(Discord.PREFIX + "§aUtilise §b/link §l" + token + "§r§asur notre discord pour lier ton compte.");
-			player.sendMessage(Discord.PREFIX + "§aUtilise §b/discord §apour accéder à notre discord");
+			player.sendMessage(Discord.PREFIX + "§aTon token a été généré avec succès !");
+			player.sendMessage(Discord.PREFIX + "§aUtilise §b/link §l" + token + "§r §asur notre discord pour lier ton compte.");
+			player.sendMessage(Discord.PREFIX + "§aUtilise §b/discord §apour accéder à notre discord.");
 
 			int isLinked = ProfileManager.getProfile(player).getIsLinked();
 			String discordId = ProfileManager.getProfile(player).getDiscordID();

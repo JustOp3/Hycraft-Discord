@@ -20,28 +20,29 @@ public class DatabaseManager {
 
 		Connection connection = Discord.getInstance().getDbconnection().getConnection();
 
-		PreparedStatement preparedStatement = connection.prepareStatement("SELECT * IN linkprofile WHERE uuid=?");
+		PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM linkprofile WHERE uuid=?");
 		preparedStatement.setString(1, player.getUniqueId().toString());
 		ResultSet result = preparedStatement.executeQuery();
 
 		if (result.next()) {
-			PreparedStatement updatestatement = connection.prepareStatement("UPDATE linkprofile SET discordId = ?, isLinked = ?, igName = ?, linkToken = ? WHERE uuid =" + player.getUniqueId().toString());
+			PreparedStatement updatestatement = connection.prepareStatement("UPDATE linkprofile SET discordId = ?, isLinked = ?, igName = ?, linkToken = ? WHERE uuid =?");
 			updatestatement.setString(1, discordId);
 			updatestatement.setInt(2, isLinked);
 			updatestatement.setString(3, player.getName());
 			updatestatement.setString(4, linkToken);
+			updatestatement.setString(5, player.getUniqueId().toString());
 
-			updatestatement.executeQuery();
+			updatestatement.executeUpdate();
 
 		} else {
-			PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO linkprofile VALUES ?, ?, ?, ?, ?");
+			PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO linkprofile (uuid, discordId, isLinked, igName, linkToken) VALUES (?, ?, ?, ?, ?)");
 			insertStatement.setString(1, player.getUniqueId().toString());
 			insertStatement.setString(2, profile.getDiscordID());
 			insertStatement.setInt(3, profile.getIsLinked());
 			insertStatement.setString(4, player.getName());
 			insertStatement.setString(5, profile.getLinkToken());
 
-			insertStatement.executeQuery();
+			insertStatement.executeUpdate();
 		}
 
 	}
@@ -49,8 +50,8 @@ public class DatabaseManager {
 	public static void registerPlayer(Player player) throws SQLException {
 
 		Connection connection = Discord.getInstance().getDbconnection().getConnection();
-		PreparedStatement preparedStatement = connection.prepareStatement("SELECT * IN linkprofile WHERE uuid=" + player.getUniqueId().toString());
-
+		PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM linkprofile WHERE uuid=?");
+		preparedStatement.setString(1, player.getUniqueId().toString());
 		ResultSet resultSet = preparedStatement.executeQuery();
 
 		if (resultSet.next()) {

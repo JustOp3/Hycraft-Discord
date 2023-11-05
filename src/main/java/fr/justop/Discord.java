@@ -4,6 +4,7 @@ import fr.justop.commands.CommandDiscord;
 import fr.justop.commands.LinkCommand;
 import fr.justop.db.DatabaseConnection;
 import fr.justop.db.DatabaseManager;
+import fr.justop.players.ProfileManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -39,7 +40,8 @@ public final class Discord extends SimplePlugin implements Listener {
 
 		try {
 			Statement statement = this.dbconnection.getConnection().createStatement();
-			statement.executeUpdate("CREATE TABLE IF NOT EXISTS linkprofile (uuid varchar(36) primary key, discordId varchar(18), isLinked tinyint, igName varchar, linkToken varchar(8)");
+			statement.executeUpdate("CREATE TABLE IF NOT EXISTS linkprofile (uuid varchar(36) primary key, discordId varchar(18), isLinked tinyint, igName varchar(36), linkToken varchar(8))");
+			statement.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -70,11 +72,8 @@ public final class Discord extends SimplePlugin implements Listener {
 	@EventHandler
 	public void onQuit(PlayerQuitEvent event) {
 		Player player = event.getPlayer();
-		try {
-			DatabaseManager.savePlayer(player);
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		}
+		Bukkit.getConsoleSender().sendMessage(ProfileManager.profiles.toString());
+		ProfileManager.removeProfile(player);
 	}
 
 
